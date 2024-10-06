@@ -2,6 +2,10 @@
 
 Bienvenido al convertidor precios de un conjunto de monedas usando [API de Exchange Rate](https://www.exchangerate-api.com/).
 
+## Resources
+
+- [vscode-java-dependency](https://github.com/microsoft/vscode-java-dependency?tab=readme-ov-file#manage-dependencies) para agregar GSON
+
 ## Folder Structure
 
 The workspace contains two folders by default, where:
