@@ -52,6 +52,10 @@ public class MoneyTalks {
                 default:
                     System.out.println("Opcion invalida. Por fgavor, intente de nuevo.");
             }
+            if (running) {
+                System.out.println("Presione Enter para continuar...");
+                scanner.nextLine(); // para el newline
+            }
         }
     }
 
