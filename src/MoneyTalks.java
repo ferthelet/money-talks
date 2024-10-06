@@ -3,6 +3,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
+// por favor cree una carpeta "lib" sin las comillas y agregue la dep json-20240303.jar
+// podria necesitar cerrar el editor y cargar de nuevo para que funcione
 import org.json.JSONObject;
 
 public class MoneyTalks {
