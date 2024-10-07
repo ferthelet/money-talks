@@ -73,10 +73,10 @@ public class MoneyTalks {
             if (result.getString("result").equals("success")) {
                 double tasaDeCambio = result.getDouble("conversion_rate");
                 double resultado = result.getDouble("conversion_result");
-                long lastUpdateTime = result.getLong("time_last_update_unix");
+                String lastUpdateTime = result.getString("time_last_update_utc");
 
-                System.out.printf("%.2f %s = %.2f %s, TC = %.2f%n", cantidad, monedaOrigen, resultado,
-                 monedaDestino, tasaDeCambio);
+                System.out.printf("%.2f %s = %.2f %s. TC = %.2f. Actualizacion: %-22.22s GMT%n", 
+                cantidad, monedaOrigen, resultado, monedaDestino, tasaDeCambio, lastUpdateTime);
             } else {
                 System.out.println("Error al obtener la tasa de cambio: " + result.getString("error-type"));
             }
