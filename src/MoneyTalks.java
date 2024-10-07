@@ -80,11 +80,6 @@ public class MoneyTalks {
             } else {
                 System.out.println("Error al obtener la tasa de cambio: " + result.getString("error-type"));
             }
-
-
-            // double tasaDeCambio = obtenerTasaDeCambio(monedaOrigen, monedaDestino);
-            // double resultado = cantidad * tasaDeCambio;
-            //System.out.printf("%.2f %s = %.2f %s%n", cantidad, monedaOrigen, resultado, monedaDestino);
         } catch (Exception e) {
             System.out.println("Error al convertir la moneda: " + e.getMessage());
         }
@@ -102,17 +97,12 @@ public class MoneyTalks {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
         StringBuilder response = new StringBuilder();
-        String cadena;
+        String output;
 
-        while ((cadena = br.readLine()) != null) {
-            response.append(cadena);
+        while ((output = br.readLine()) != null) {
+            response.append(output);
         }
         conn.disconnect();
-        
-        // JSONObject jsonObject = new JSONObject(response.toString());
-        // JSONObject tasaDeCambio = jsonObject.getJSONObject("conversion_rates");
-
-        // return tasaDeCambio.getDouble(monedaDestino);
         return new JSONObject(response.toString());
     }
 }
