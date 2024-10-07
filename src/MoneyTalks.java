@@ -83,16 +83,20 @@ public class MoneyTalks {
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
 
-        BufferedReader lector = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-        StringBuilder respuesta = new StringBuilder();
+        if (conn.getResponseCode() != 200) {
+            throw new RuntimeException("Fallo : codigo de error HTTP : " + conn.getResponseCode());
+        }
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        StringBuilder response = new StringBuilder();
         String cadena;
 
-        while ((cadena = lector.readLine()) != null) {
-            respuesta.append(cadena);
+        while ((cadena = br.readLine()) != null) {
+            response.append(cadena);
         }
-        lector.close();
-
-        JSONObject jsonObject = new JSONObject(respuesta.toString());
+        conn.disconnect();
+        
+        JSONObject jsonObject = new JSONObject(response.toString());
         JSONObject tasaDeCambio = jsonObject.getJSONObject("conversion_rates");
 
         return tasaDeCambio.getDouble(monedaDestino);
