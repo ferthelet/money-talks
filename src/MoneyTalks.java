@@ -10,11 +10,12 @@ import org.json.JSONObject;
 public class MoneyTalks {
     private static final String API_KEY = "ad152da01910d2160641276c";
     private static final String API_URL = "https://v6.exchangerate-api.com/v6/" + API_KEY + "/pair/";
+
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
 
-        while(running) {
+        while (running) {
 
             System.out.println("\nBienvenido a Money Talks\n");
             System.out.println("1. Dolar =>> Peso argentino");
@@ -49,13 +50,13 @@ public class MoneyTalks {
                     break;
                 case 7:
                     running = false;
-                    System.out.println("Gracias por usar Money Talks. Hasta luego!");
+                    System.out.println("\nGracias por usar Money Talks. Hasta luego!\n");
                     break;
                 default:
-                    System.out.println("Opcion invalida. Por fgavor, intente de nuevo.");
+                    System.out.println("\nOpcion invalida. Por favor, intente de nuevo.");
             }
             if (running) {
-                System.out.println("Presione Enter para continuar...");
+                System.out.println("\nPresione Enter para continuar...");
                 scanner.nextLine(); // para el newline
             }
         }
@@ -75,8 +76,8 @@ public class MoneyTalks {
                 double resultado = result.getDouble("conversion_result");
                 String lastUpdateTime = result.getString("time_last_update_utc");
 
-                System.out.printf("%,.2f %s = %,.2f %s. TC = %,.2f. Actualizacion: %-22.22s GMT%n", 
-                cantidad, monedaOrigen, resultado, monedaDestino, tasaDeCambio, lastUpdateTime);
+                System.out.printf("%n%,.2f %s = %,.2f %s. TC = %,.2f. Actualizacion: %-22.22s GMT%n",
+                        cantidad, monedaOrigen, resultado, monedaDestino, tasaDeCambio, lastUpdateTime);
             } else {
                 System.out.println("Error al obtener la tasa de cambio: " + result.getString("error-type"));
             }
@@ -85,7 +86,8 @@ public class MoneyTalks {
         }
     }
 
-    private static JSONObject obtenerTasaDeCambio(String monedaOrigen, String monedaDestino, double cantidad) throws Exception {
+    private static JSONObject obtenerTasaDeCambio(String monedaOrigen, String monedaDestino, double cantidad)
+            throws Exception {
         String cadenaURL = API_URL + monedaOrigen + "/" + monedaDestino + "/" + cantidad;
         URL url = new URL(cadenaURL);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
