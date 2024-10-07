@@ -75,7 +75,7 @@ public class MoneyTalks {
                 double resultado = result.getDouble("conversion_result");
                 String lastUpdateTime = result.getString("time_last_update_utc");
 
-                System.out.printf("%.2f %s = %.2f %s. TC = %.2f. Actualizacion: %-22.22s GMT%n", 
+                System.out.printf("%,.2f %s = %,.2f %s. TC = %,.2f. Actualizacion: %-22.22s GMT%n", 
                 cantidad, monedaOrigen, resultado, monedaDestino, tasaDeCambio, lastUpdateTime);
             } else {
                 System.out.println("Error al obtener la tasa de cambio: " + result.getString("error-type"));
